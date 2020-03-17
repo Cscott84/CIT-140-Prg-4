@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title> CIT 140 Program IIII</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	
+	
+	<!--Bootstrap-->
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<script>
+	
+	
+	window.onload = function()
+	{
+		document.getElementById("btn1").onclick = run;
+	
+	}
+	
+	//trips array of objects
+	var trips = [
+	{city:"Chicago", miles: 329 , gallons:10.6},
+	{city: "St.Louis", miles:284, gallons:10.5},
+	{city:"Indianapolis", miles:122, gallons:3.7},
+	{city:"Nashville", miles: 191, gallons:6.4},
+	{city:"Cincinnati", miles: 132, gallons:3.9}
+	];
+	
+
+	function run()
+	{
+	
+		var disp = "<table cellspace=10 border=2><tr><th>City</th><th>miles</th><th>Gallons</th><th>MPG</th><tr>";
+		
+		for(let i = 0; i < trips.length; i++)
+		{
+			var mpg = trips[i].miles / trips[i].gallons;
+		
+			disp += "<tr><td>" + trips[i].city + "</td><td>" + trips[i].miles + "</td><td>" + trips[i].gallons + "</td><td>" +  mpg.toFixed(2) + "</td></tr>";
+		
+		}
+		
+		disp += "</table>"
+	
+		document.getElementById("temp").innerHTML = disp;
+	
+	}
+
+	
+	
+
+	
+	</script>
+</head>
+
+<body>
+	<div class="container">
+
+	<h1>Trip Data</h1>
+	<input type="button" id="btn1" value="Display Trip Data">
+	<br><br>
+	
+	<table class="table table-bordered table-striped">
+	<tr>
+	<th>Desitnation</th>
+	<th>Miles</th>
+	<th>Gallons</th>
+	</tr>
+	</table>
+	
+	
+	
+	
+	</div>
+	
+	<div id="temp">
+	</div>
+	
+
+</body>
+
+
+
+</html>
