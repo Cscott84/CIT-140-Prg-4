@@ -38,26 +38,29 @@
 	function run()
 	{
 	
-		var disp = "<table cellspace=10 border=2><tr><th>City</th><th>miles</th><th>Gallons</th><th>MPG</th><tr>";
+		var table =  document.getElementById("table");
 		
 		for(let i = 0; i < trips.length; i++)
 		{
-			var mpg = trips[i].miles / trips[i].gallons;
+			var mpg = trips[i].miles / parseFloat(trips[i].gallons);
+			
+			var row = document.createElement("tr");
+			var rowdata = "<td>"+ trips[i].city + "</td>";
+			rowdata += "<td>" + trips[i].miles + "</td>";
+			rowdata += "<td>" + trips[i].gallons + "</td>";
+			rowdata +="<td>" + mpg.toFixed(2) + "</td>";
+			
+			row.innerHTML = rowdata;
+			
+			row.style.fontWeight="bold";
+			
 		
-			disp += "<tr><td>" + trips[i].city + "</td><td>" + trips[i].miles + "</td><td>" + trips[i].gallons + "</td><td>" +  mpg.toFixed(2) + "</td></tr>";
-		
+			table.appendChild(row);
+			
 		}
-		
-		disp += "</table>"
-	
-		document.getElementById("temp").innerHTML = disp;
-	
+			
 	}
 
-	
-	
-
-	
 	</script>
 </head>
 
@@ -65,14 +68,15 @@
 	<div class="container">
 
 	<h1>Trip Data</h1>
-	<input type="button" id="btn1" value="Display Trip Data">
+	<input type="button" class="btn" id="btn1" value="Display Trip Data">
 	<br><br>
 	
-	<table class="table table-bordered table-striped">
+	<table id="table"  class="table table-bordered table-striped">
 	<tr>
 	<th>Desitnation</th>
 	<th>Miles</th>
 	<th>Gallons</th>
+	<th>MPG</th>
 	</tr>
 	</table>
 	
@@ -81,8 +85,7 @@
 	
 	</div>
 	
-	<div id="temp">
-	</div>
+	
 	
 
 </body>
