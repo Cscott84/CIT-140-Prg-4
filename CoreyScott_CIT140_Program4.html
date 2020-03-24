@@ -7,7 +7,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	
-	
 	<!--Bootstrap-->
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -38,51 +37,40 @@
 	function run()
 	{
 	
-		var table =  document.getElementById("table");
+		var body =  document.getElementById("body");
+		var div = document.createElement("div");
+		var table = "<table class='table table-bordered table-striped'>";
+		table += "<tr><th>Desination</th><th>Miles</th><th>Gallons</th><th>MPG</th></tr>";
+		
 		
 		for(let i = 0; i < trips.length; i++)
 		{
 			var mpg = trips[i].miles / parseFloat(trips[i].gallons);
 			
-			var row = document.createElement("tr");
-			var rowdata = "<td>"+ trips[i].city + "</td>";
-			rowdata += "<td>" + trips[i].miles + "</td>";
-			rowdata += "<td>" + trips[i].gallons + "</td>";
-			rowdata +="<td>" + mpg.toFixed(2) + "</td>";
 			
-			row.innerHTML = rowdata;
-			
-			row.style.fontWeight="bold";
-			
-		
-			table.appendChild(row);
-			
+			table += "<tr><td>"+ trips[i].city + "</td>";
+			table += "<td>" + trips[i].miles + "</td>";
+			table += "<td>" + trips[i].gallons + "</td>";
+			table +="<td>" + mpg.toFixed(1) + "</td></tr>";
+					
 		}
+		
+		table +="</table>";
+		div.innerHTML = table;
+		body.appendChild(div);
 			
 	}
 
 	</script>
 </head>
 
-<body>
+<body id="body">
 	<div class="container">
 
 	<h1>Trip Data</h1>
 	<input type="button" class="btn" id="btn1" value="Display Trip Data">
 	<br><br>
-	
-	<table id="table"  class="table table-bordered table-striped">
-	<tr>
-	<th>Desitnation</th>
-	<th>Miles</th>
-	<th>Gallons</th>
-	<th>MPG</th>
-	</tr>
-	</table>
-	
-	
-	
-	
+		
 	</div>
 	
 	
